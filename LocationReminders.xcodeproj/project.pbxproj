@@ -13,6 +13,7 @@
 		D4EC6FE0203554A4003D250E /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC6FDF203554A4003D250E /* Reminder.swift */; };
 		D4EC6FE42035566D003D250E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC6FE32035566D003D250E /* MainVC.swift */; };
 		D4EC6FE620355A26003D250E /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC6FE520355A26003D250E /* AddReminderVC.swift */; };
+		D4EC6FE820356740003D250E /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC6FE720356740003D250E /* LocationController.swift */; };
 		DB0C5E531F6869D100E2AC0A /* LRLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0C5E521F6869D100E2AC0A /* LRLoginViewController.m */; };
 		DB0C5E571F7046A300E2AC0A /* LRSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DB0C5E561F7046A300E2AC0A /* LRSignUpViewController.m */; };
 		DB8004F81EB7AC0400F2C116 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DB8004F71EB7AC0400F2C116 /* main.m */; };
@@ -56,6 +57,7 @@
 		D4EC6FDF203554A4003D250E /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		D4EC6FE32035566D003D250E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		D4EC6FE520355A26003D250E /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
+		D4EC6FE720356740003D250E /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		DB0C5E501F61C6E200E2AC0A /* Credentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Credentials.h; sourceTree = "<group>"; };
 		DB0C5E511F6869D100E2AC0A /* LRLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LRLoginViewController.h; sourceTree = "<group>"; };
 		DB0C5E521F6869D100E2AC0A /* LRLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LRLoginViewController.m; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				DB8004FD1EB7AC0400F2C116 /* ViewController.m */,
 				DB8005201EB9278100F2C116 /* LocationController.h */,
 				DB8005211EB9278100F2C116 /* LocationController.m */,
+				D4EC6FE720356740003D250E /* LocationController.swift */,
 				DB0C5E511F6869D100E2AC0A /* LRLoginViewController.h */,
 				DB0C5E521F6869D100E2AC0A /* LRLoginViewController.m */,
 				DB0C5E551F7046A300E2AC0A /* LRSignUpViewController.h */,
@@ -283,6 +286,7 @@
 				DB8004FE1EB7AC0400F2C116 /* ViewController.m in Sources */,
 				DB8004FB1EB7AC0400F2C116 /* AppDelegate.m in Sources */,
 				DB0C5E571F7046A300E2AC0A /* LRSignUpViewController.m in Sources */,
+				D4EC6FE820356740003D250E /* LocationController.swift in Sources */,
 				DB8004F81EB7AC0400F2C116 /* main.m in Sources */,
 				D4EC6FE620355A26003D250E /* AddReminderVC.swift in Sources */,
 				D4EC6FE0203554A4003D250E /* Reminder.swift in Sources */,
