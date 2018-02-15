@@ -1,1 +1,1 @@
-github "parse-community/Parse-SDK-iOS-OSX"
+github "parse-community/Parse-SDK-iOS-OSX" == 1.15.2
