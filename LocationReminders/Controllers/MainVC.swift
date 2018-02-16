@@ -41,7 +41,8 @@ class MainVC: UIViewController {
             return
         }
         let newReminderVC = segue.destination
-        
+        // MARK: TODO
+        // Finish duplicating this logic. But first we need a Swift version of the AddReminderVC.
     }
 
 
