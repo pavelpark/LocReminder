@@ -36,8 +36,9 @@ class AddReminderVC: UIViewController {
     var completion: NewReminderCreateCompletion?
     
     var userUnits: Int = 0
-    var radiusMeasurment = Measurement(value: 15.0, unit: UnitLength.meters)
-    let minRadius = 15, maxRadius = 40234
+    var radiusMeasurement = Measurement(value: 15.0, unit: UnitLength.meters)
+    // Radius must be 15m - 40km.
+    let minRadius = 15, /* 15 m. / ~50 ft. */  maxRadius = 40234 // ~40 km. / 25 mi.
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,12 +56,48 @@ class AddReminderVC: UIViewController {
         // UserDefault value evaluates to 0 (meters) if not already set
         self.userUnits = UserDefaults.standard.integer(forKey: "userUnits")
         print("User units set to %d", self.userUnits)
+        radiusUnits.selectedSegmentIndex = userUnits
         updateUnits()
         setupView()
     }
     
     func updateUnits() {
+        switch userUnits {
+        case 0:
+            // Meters
+            locationRadius.placeholder = "Distance in meters"
+            radiusNoteLabel.text = "From 15 to 40,000 m"
+            radiusMeasurement.convert(to: .meters)
+            self.locationRadius.keyboardType = .numberPad
+            break
+        case 1:
+            // Kilometers
+            locationRadius.placeholder = "Distance in kilometers"
+            radiusNoteLabel.text = "From 0.1 to 40 km"
+            radiusMeasurement.convert(to: .kilometers)
+            self.locationRadius.keyboardType = .decimalPad
+            break
+        case 2:
+            // Feet
+            locationRadius.placeholder = "Distance in feet"
+            radiusNoteLabel.text = "From 50 to 132,000 ft"
+            radiusMeasurement.convert(to: .feet)
+            locationRadius.keyboardType = .numberPad
+            break
+        case 3:
+            // Miles
+            locationRadius.placeholder = "Distance in miles"
+            radiusNoteLabel.text = "From 0.01 to 25 mi"
+            radiusMeasurement.convert(to: .miles)
+            locationRadius.keyboardType = .decimalPad
+            break
+        default:
+            break
+        }
         
+        if locationRadius.isFirstResponder {
+            locationRadius.reloadInputViews()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
