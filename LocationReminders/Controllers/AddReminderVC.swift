@@ -39,12 +39,14 @@ class AddReminderVC: UIViewController {
     var radiusMeasurement = Measurement(value: 15.0, unit: UnitLength.meters)
     // Radius must be 15m - 40km.
     let minRadius:Double = 15, /* 15 m. / ~50 ft. */  maxRadius:Double = 40234 // ~40 km. / 25 mi.
-        
+    var numberFormatter = NumberFormatter()
+    
+    // MARK: View lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // MARK: TODO: Set delegates for textfields (locationName & locationRadius)
-        // locationName.delegate = self
-        // locationRadius.delegate = self
+        
+        locationName.delegate = self
+        locationRadius.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(validateReminder), name: .UITextFieldTextDidChange, object: self.locationRadius)
         NotificationCenter.default.addObserver(self, selector: #selector(validateReminder), name: .UITextFieldTextDidChange, object: self.locationName)
@@ -62,6 +64,13 @@ class AddReminderVC: UIViewController {
         setupView()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        checkRegionLimits()
+    }
+    
+    // MARK: Class methods
     func updateUnits() {
         switch userUnits {
         case 0:
@@ -101,11 +110,6 @@ class AddReminderVC: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        checkRegionLimits()
-    }
     
     func setupView() {
         setReminderButton.backgroundColor = UIColor.LRColor.disabledButtonColor
@@ -198,9 +202,53 @@ class AddReminderVC: UIViewController {
             setReminderButton.backgroundColor = UIColor.gray
         }
     }
+    
+    // MARK: User action methods
+    
+    @IBAction func radiusUnitsChanged(_ sender: UISegmentedControl) {
+        print("update user units")
+        userUnits = sender.selectedSegmentIndex
+        UserDefaults.standard.set(userUnits, forKey: "userUnits")
+        updateUnits()
+        
+        var newRadiusString: String
+       // var newRadiusNumber: Double
+        // let numberFormatter = NumberFormatter()
+        
+        // Change displayed value and update userDefaults
+        switch (userUnits) {
+        case 0, 2:
+            // Units set to m or ft
+            numberFormatter.numberStyle = .none
+            break
+        case 1, 3:
+            // Units set to km or mi
+            numberFormatter.usesSignificantDigits = true
+            numberFormatter.minimumSignificantDigits = 1
+            numberFormatter.maximumSignificantDigits = 2
+            numberFormatter.numberStyle = .decimal
+            break
+        default:
+            break
+        }
+        print("new measurement: \(radiusMeasurement)")
+        
+        if Double(radiusMeasurement.value) <= 0 {
+            newRadiusString = ""
+        } else {
+            //newRadiusNumber = radiusMeasurement.value
+            newRadiusString = numberFormatter.string(from: NSNumber(value: radiusMeasurement.value)) ?? ""
+        }
+        locationRadius.text = newRadiusString
+    }
+    
+    func setReminderButtonPressed(_ sender: UIButton) {
+        // MARK: TODO: Convert setReminderButtonPressed to Swift
+    }
 }
 
 extension AddReminderVC: UITextFieldDelegate {
+    // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         locationName.resignFirstResponder()
         locationRadius.resignFirstResponder()

@@ -170,6 +170,7 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <action selector="radiusUnitsChanged:" destination="IaI-cQ-ePw" eventType="valueChanged" id="A8q-2z-eUM"/>
+                                    <action selector="radiusUnitsChanged:" destination="wLR-ja-LuR" eventType="valueChanged" id="q4H-Bk-EuA"/>
                                 </connections>
                             </segmentedControl>
                             <button opaque="NO" alpha="0.75" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gnf-KX-jKt">
@@ -233,6 +234,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="25p-mo-ddS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="wLR-ja-LuR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1909.5999999999999" y="126.38680659670166"/>
         </scene>
