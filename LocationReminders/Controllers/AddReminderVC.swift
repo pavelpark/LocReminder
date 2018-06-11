@@ -38,7 +38,7 @@ class AddReminderVC: UIViewController {
     var userUnits: Int = 0
     var radiusMeasurement = Measurement(value: 15.0, unit: UnitLength.meters)
     // Radius must be 15m - 40km.
-    let minRadius = 15, /* 15 m. / ~50 ft. */  maxRadius = 40234 // ~40 km. / 25 mi.
+    let minRadius:Double = 15, /* 15 m. / ~50 ft. */  maxRadius:Double = 40234 // ~40 km. / 25 mi.
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +57,7 @@ class AddReminderVC: UIViewController {
         self.userUnits = UserDefaults.standard.integer(forKey: "userUnits")
         print("User units set to %d", self.userUnits)
         radiusUnits.selectedSegmentIndex = userUnits
+        radiusMeasurement = Measurement.init(value: 15, unit: .meters)
         updateUnits()
         setupView()
     }
@@ -163,14 +164,40 @@ class AddReminderVC: UIViewController {
         let regex = "(^[^\\D]{0,4}(\\.?)\\d{0,3}$)" // Permits 0-4 digits before an optional decimal point, and 0-3 digits after. I.e., 0.001 to 9999.999 is allowed.
         let matchedRange = locationRadius.text?.range(of: regex, options: .regularExpression)
         let radiusText = locationRadius.text ?? ""
-        let unwrappedRadius = Float(radiusText) ?? 0.0
-        if matchedRange == nil || unwrappedRadius == 0.0 {
+        let unwrappedRadius = Double(radiusText) ?? 0.0
+        
+        if matchedRange == nil || unwrappedRadius > 0.0 {
+            // Verify that radius text matches regex and can be converted to a positive Double value.
             validRadius = false
+        } else if sender.object as? UITextField == locationRadius {
+            // Create a new measurement from Double and check that it is within min & max bounds.
+            let newMeasurement = Measurement.init(value: unwrappedRadius, unit: radiusMeasurement.unit)
+            if newMeasurement.value >= minRadius && newMeasurement.value <= maxRadius {
+                radiusMeasurement = newMeasurement
+                print("Text changed, new measurement: \(radiusMeasurement)")
+            } else {
+                validRadius = false
+            }
         }
         
-        //MARK: TODO: Finish converting validateReminder function from Obj-C
+        if validRadius {
+            radiusNoteLabel.textColor = UIColor.darkGray
+            radiusNoteLabel.backgroundColor = UIColor.LRColor.yellowNoteColor
+            radiusWarning.isHidden = true
+        } else {
+            radiusNoteLabel.textColor = UIColor.white
+            radiusNoteLabel.backgroundColor = UIColor.LRColor.pinkNoteColor
+            radiusWarning.isHidden = false
+        }
+        
+        if validRadius && validName {
+            setReminderButton.isEnabled = true
+            setReminderButton.backgroundColor = UIColor.LRColor.enabledButtonColor
+        } else {
+            setReminderButton.isEnabled = false
+            setReminderButton.backgroundColor = UIColor.gray
+        }
     }
-
 }
 
 extension AddReminderVC: UITextFieldDelegate {
