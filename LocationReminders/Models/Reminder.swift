@@ -11,6 +11,5 @@ import CoreLocation
 
 struct Reminder {
     var name: String
-    let identifier: UUID
     var region: CLCircularRegion
 }

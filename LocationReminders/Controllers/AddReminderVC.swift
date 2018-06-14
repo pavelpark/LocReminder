@@ -210,11 +210,7 @@ class AddReminderVC: UIViewController {
         userUnits = sender.selectedSegmentIndex
         UserDefaults.standard.set(userUnits, forKey: "userUnits")
         updateUnits()
-        
-        var newRadiusString: String
-       // var newRadiusNumber: Double
-        // let numberFormatter = NumberFormatter()
-        
+
         // Change displayed value and update userDefaults
         switch (userUnits) {
         case 0, 2:
@@ -233,17 +229,27 @@ class AddReminderVC: UIViewController {
         }
         print("new measurement: \(radiusMeasurement)")
         
+        var newRadiusString: String
         if Double(radiusMeasurement.value) <= 0 {
             newRadiusString = ""
         } else {
-            //newRadiusNumber = radiusMeasurement.value
             newRadiusString = numberFormatter.string(from: NSNumber(value: radiusMeasurement.value)) ?? ""
         }
         locationRadius.text = newRadiusString
     }
     
     func setReminderButtonPressed(_ sender: UIButton) {
-        // MARK: TODO: Convert setReminderButtonPressed to Swift
+        var newReminderName = locationName.text ?? ""
+        if newReminderName == "" {
+            newReminderName = "Reminder"
+        }
+        
+        let newReminderRadius = radiusMeasurement.converted(to: .meters)
+        let newReminderRegion = CLCircularRegion(center: coordinate, radius: newReminderRadius.value, identifier: UUID().uuidString)
+        let newReminder = Reminder(name: newReminderName, region: newReminderRegion)
+        
+        // TODO: Create API class for CloudKit, and send reminder to it
+        //   Then display MKCircle on map.
     }
 }
 
