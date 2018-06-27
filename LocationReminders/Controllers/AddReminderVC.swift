@@ -11,15 +11,6 @@ import MapKit
 
 typealias NewReminderCreateCompletion = (MKCircle) -> ()
 
-extension UIColor {
-    struct LRColor {
-        static let enabledButtonColor = UIColor(red: 0.0, green: 0.478431, blue: 1.0, alpha: 1)
-        static let disabledButtonColor = UIColor.gray
-        static let yellowNoteColor = UIColor(red: 0.999534, green: 0.988357, blue: 0.472736, alpha: 1)
-        static let pinkNoteColor = UIColor(red: 0.939375, green: 0.703384, blue: 0.837451, alpha: 1)
-    }
-}
-
 class AddReminderVC: UIViewController {
     
     @IBOutlet weak var locationRadius: UITextField!
@@ -248,16 +239,27 @@ class AddReminderVC: UIViewController {
         let newReminderRegion = CLCircularRegion(center: coordinate, radius: newReminderRadius.value, identifier: UUID().uuidString)
         let newReminder = Reminder(name: newReminderName, region: newReminderRegion)
         
-        // TODO: Send reminder to CLoudKit
-        //   Then display MKCircle on map.
+        // MARK: TODO: Test this code.
         CloudKit.shared.save(reminder: newReminder) { (success) in
-            guard success == true else {
-                print ("Reminder not saved!")
+            guard success == true, let completion = self.completion else {
+                print("Error when saving reminder!")
+                print("  Reminder saved to iCloud: \(success)")
+                print("  Completion not nil: \(self.completion != nil)")
                 return
             }
-            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReminderSavedToCloudKit"), object: nil) // TODO: Verify name is set properly
             
+            NotificationCenter.default.post(name: .ReminderSaved, object: nil)
+            if CLLocationManager.isMonitoringAvailable(for: CLCircularRegion.self) {
+                LocationController.sharedInstance.startMonitoringForRegion(newReminder.region)
+            }
+
+            let circle = MKCircle(center: newReminder.region.center, radius: newReminder.region.radius)
+            circle.title = newReminder.region.identifier
+            completion(circle)
+            
+            self.navigationController?.popViewController(animated: true)
         }
+        // MARK: TODO: Save reminder to local storage.
     }
 }
 

@@ -10,6 +10,7 @@
 		D4098BDE1F59001D00344CDC /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D4098BDD1F59001D00344CDC /* libsqlite3.tbd */; };
 		D42A625A1F6B00A30025B30C /* LogoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D42A62591F6B00A30025B30C /* LogoView.xib */; };
 		D42A625D1F6B06240025B30C /* LogoView.m in Sources */ = {isa = PBXBuildFile; fileRef = D42A625C1F6B06240025B30C /* LogoView.m */; };
+		D450816020E4067B0024B012 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D450815F20E4067B0024B012 /* Extensions.swift */; };
 		D4EC6FE0203554A4003D250E /* Reminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC6FDF203554A4003D250E /* Reminder.swift */; };
 		D4EC6FE42035566D003D250E /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC6FE32035566D003D250E /* MainVC.swift */; };
 		D4EC6FE620355A26003D250E /* AddReminderVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EC6FE520355A26003D250E /* AddReminderVC.swift */; };
@@ -56,6 +57,7 @@
 		D42A62591F6B00A30025B30C /* LogoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoView.xib; sourceTree = "<group>"; };
 		D42A625B1F6B06240025B30C /* LogoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogoView.h; sourceTree = "<group>"; };
 		D42A625C1F6B06240025B30C /* LogoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogoView.m; sourceTree = "<group>"; };
+		D450815F20E4067B0024B012 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D4EC6FDF203554A4003D250E /* Reminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reminder.swift; sourceTree = "<group>"; };
 		D4EC6FE32035566D003D250E /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		D4EC6FE520355A26003D250E /* AddReminderVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReminderVC.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 			children = (
 				DB8005071EB7AC0400F2C116 /* Info.plist */,
 				DB8004F71EB7AC0400F2C116 /* main.m */,
+				D450815F20E4067B0024B012 /* Extensions.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				DB8004FE1EB7AC0400F2C116 /* ViewController.m in Sources */,
 				DB8004FB1EB7AC0400F2C116 /* AppDelegate.m in Sources */,
 				DB0C5E571F7046A300E2AC0A /* LRSignUpViewController.m in Sources */,
+				D450816020E4067B0024B012 /* Extensions.swift in Sources */,
 				D4EC6FE820356740003D250E /* LocationController.swift in Sources */,
 				DB8004F81EB7AC0400F2C116 /* main.m in Sources */,
 				D4EC6FE620355A26003D250E /* AddReminderVC.swift in Sources */,
