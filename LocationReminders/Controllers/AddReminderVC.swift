@@ -248,8 +248,16 @@ class AddReminderVC: UIViewController {
         let newReminderRegion = CLCircularRegion(center: coordinate, radius: newReminderRadius.value, identifier: UUID().uuidString)
         let newReminder = Reminder(name: newReminderName, region: newReminderRegion)
         
-        // TODO: Create API class for CloudKit, and send reminder to it
+        // TODO: Send reminder to CLoudKit
         //   Then display MKCircle on map.
+        CloudKit.shared.save(reminder: newReminder) { (success) in
+            guard success == true else {
+                print ("Reminder not saved!")
+                return
+            }
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "ReminderSavedToCloudKit"), object: nil) // TODO: Verify name is set properly
+            
+        }
     }
 }
 
