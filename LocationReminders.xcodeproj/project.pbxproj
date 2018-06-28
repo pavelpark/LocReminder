@@ -34,6 +34,7 @@
 		DB8005271EBA5E6F00F2C116 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8005261EBA5E6F00F2C116 /* ParseUI.framework */; };
 		DBEBAED420E2AE5D00163ABD /* CloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBAED320E2AE5D00163ABD /* CloudKit.swift */; };
 		DBEBAED720E2C11B00163ABD /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEBAED620E2C11B00163ABD /* CloudKit.framework */; };
+		DBEBAED920E5968C00163ABD /* StorageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEBAED820E5968C00163ABD /* StorageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,6 +91,7 @@
 		DBEBAED320E2AE5D00163ABD /* CloudKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloudKit.swift; sourceTree = "<group>"; };
 		DBEBAED520E2C11400163ABD /* LocationReminders.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = LocationReminders.entitlements; sourceTree = "<group>"; };
 		DBEBAED620E2C11B00163ABD /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		DBEBAED820E5968C00163ABD /* StorageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -205,6 +207,7 @@
 				DB0C5E551F7046A300E2AC0A /* LRSignUpViewController.h */,
 				DB0C5E561F7046A300E2AC0A /* LRSignUpViewController.m */,
 				DBEBAED320E2AE5D00163ABD /* CloudKit.swift */,
+				DBEBAED820E5968C00163ABD /* StorageController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				DB8004FB1EB7AC0400F2C116 /* AppDelegate.m in Sources */,
 				DB0C5E571F7046A300E2AC0A /* LRSignUpViewController.m in Sources */,
 				D450816020E4067B0024B012 /* Extensions.swift in Sources */,
+				DBEBAED920E5968C00163ABD /* StorageController.swift in Sources */,
 				D4EC6FE820356740003D250E /* LocationController.swift in Sources */,
 				DB8004F81EB7AC0400F2C116 /* main.m in Sources */,
 				D4EC6FE620355A26003D250E /* AddReminderVC.swift in Sources */,

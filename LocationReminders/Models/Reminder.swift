@@ -22,10 +22,6 @@ struct Reminder {
     }
 }
 
-struct AllReminders: Codable {
-    var reminders: [Reminder]
-}
-
 extension Reminder: Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
@@ -42,7 +38,7 @@ extension Reminder: Codable {
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
-        try container.encode(self.region.center.latitude, forKey: .centerLatitude)
+        try container.encode(region.center.latitude, forKey: .centerLatitude)
         try container.encode(region.center.longitude, forKey: .centerLongitude)
         try container.encode(region.radius, forKey: .radius)
         try container.encode(region.identifier, forKey: .identifier)

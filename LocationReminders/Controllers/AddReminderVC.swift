@@ -259,7 +259,7 @@ class AddReminderVC: UIViewController {
             
             self.navigationController?.popViewController(animated: true)
         }
-        // MARK: TODO: Save reminder to local storage.
+        StorageController.save(newReminder)
     }
 }
 
