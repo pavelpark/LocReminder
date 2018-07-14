@@ -45,6 +45,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6202062120FA5EF1001D3FDC /* Credentials.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Credentials.h; sourceTree = "<group>"; };
 		D4098BDB1F58FEC200344CDC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = ../../../../../usr/lib/libsqlite3.dylib; sourceTree = "<group>"; };
 		D4098BDD1F59001D00344CDC /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		D42A62591F6B00A30025B30C /* LogoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LogoView.xib; sourceTree = "<group>"; };
@@ -125,6 +126,7 @@
 		DB8004F61EB7AC0400F2C116 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6202062120FA5EF1001D3FDC /* Credentials.h */,
 				DB8004F71EB7AC0400F2C116 /* main.m */,
 			);
 			name = "Supporting Files";
